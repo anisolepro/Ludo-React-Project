@@ -1,0 +1,15 @@
+.CenterBox {
+    width: 190px;
+    height: 190px;
+    background-color: cyan;
+}
+
+.leftPart {
+    background-color: red;
+    border: 96px solid black;
+    border-left-color: red;
+    border-top-color: green;
+    border-right-color: yellow;
+    border-bottom-color: blue;
+
+}

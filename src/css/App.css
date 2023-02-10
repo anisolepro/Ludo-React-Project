@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+}
+
+.outerBox {
+    border: 20px solid #000;
+    width: 850px;
+    height: 850px;
+    margin: 20px auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    background-color: #000;
+    border-radius: 50px;
+}
