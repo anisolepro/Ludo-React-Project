@@ -1,0 +1,24 @@
+.Goti {
+    width: 40px;
+    height: 40px;
+    border-radius: 50% 50% 0 50%;
+    rotate: 45deg;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 3px solid #000;
+    top: 0px;
+    left: 0px;
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+}
+
+.gotiColor {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 3px solid #000;
+
+}
