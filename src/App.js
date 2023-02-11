@@ -1,8 +1,8 @@
+import React, { useState } from 'react';
 import PlayerBase from './component/PlayerBase';
 import './css/App.css';
 import Line from './component/Line.js';
 import CenterBox from './component/CenterBox.js';
-import React, { useState } from 'react';
 import Goti from './component/Goti';
 import Dice from './component/Dice';
 
@@ -11,7 +11,14 @@ import Dice from './component/Dice';
 function App() {
 
   const [diceValue, setDiceValue] = useState(0);
+  const [diceRole, setDiceRole] = useState(true);
+  const [player, setPlayer] = useState([
+    { color: 'blue', piece: 0 },
+    { color: 'red', piece: 0 },
+    { color: 'green', piece: 0 },
+    { color: 'yellow', piece: 0 }]);
 
+  const [turn, setTurn] = useState(0);
   function setPosition(e) {
     setDiceValue(e);
   }
@@ -23,7 +30,8 @@ function App() {
 
 
       {[1, 2, 3, 4].map((e) => {
-        return <Goti diceValue={diceValue} position={`gbred${e}`} gotiID={`red${e}`} color="red" />
+        return <Goti player={player} setPlayer={setPlayer} setTurn={setTurn} turn={turn}
+          diceRole={diceRole} setDiceRole={setDiceRole} diceValue={diceValue} position={`gbred${e}`} gotiID={`red${e}`} color="red" />
       })}
       {/* red goti */}
 
@@ -31,7 +39,7 @@ function App() {
 
       {/* yellow goti */}
       {[1, 2, 3, 4].map((e) => {
-        return <Goti diceValue={diceValue} position={`gbyellow${e}`} gotiID={`yellow${e}`} color="yellow" />
+        return <Goti player={player} setPlayer={setPlayer} setTurn={setTurn} turn={turn} diceRole={diceRole} setDiceRole={setDiceRole} diceValue={diceValue} position={`gbyellow${e}`} gotiID={`yellow${e}`} color="yellow" />
       })}
       {/* yellow goti */}
 
@@ -39,7 +47,7 @@ function App() {
 
       {/* blue goti */}
       {[1, 2, 3, 4].map((e) => {
-        return <Goti diceValue={diceValue} position={`gbblue${e}`} gotiID={`blue${e}`} color="blue" />
+        return <Goti player={player} setPlayer={setPlayer} setTurn={setTurn} turn={turn} diceRole={diceRole} setDiceRole={setDiceRole} diceValue={diceValue} position={`gbblue${e}`} gotiID={`blue${e}`} color="blue" />
       })}
       {/* blue goti */}
 
@@ -47,7 +55,7 @@ function App() {
 
       {/* green goti */}
       {[1, 2, 3, 4].map((e) => {
-        return <Goti diceValue={diceValue} position={`gbgreen${e}`} gotiID={`green${e}`} color="green" />
+        return <Goti player={player} setPlayer={setPlayer} setTurn={setTurn} turn={turn} diceRole={diceRole} setDiceRole={setDiceRole} diceValue={diceValue} position={`gbgreen${e}`} gotiID={`green${e}`} color="green" />
       })}
       {/* green goti */}
 
@@ -97,7 +105,7 @@ function App() {
       </div>
 
 
-      <Dice func={setPosition} />
+      <Dice func={setPosition} diceRole={diceRole} setDiceRole={setDiceRole} player={player} setPlayer={setPlayer} setTurn={setTurn} turn={turn} />
     </>
   );
 }

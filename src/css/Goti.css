@@ -22,3 +22,9 @@
     border: 3px solid #000;
 
 }
+
+.active {
+    height: 50px;
+    width: 50px;
+    z-index: 10;
+}
