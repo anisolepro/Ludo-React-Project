@@ -7,10 +7,14 @@ export default function PlayerBase(props) {
             <div className="base" style={{ "--base-width": props.width, "--base-color": props.color }}>
                 <div className="innerDiv">
 
-                    <div className="gotiPlace"></div>
-                    <div className="gotiPlace"></div>
-                    <div className="gotiPlace"></div>
-                    <div className="gotiPlace"></div>
+                    <div id={props.gotiBaseId[0]} className="gotiPlace">
+                    </div>
+                    <div id={props.gotiBaseId[1]} className="gotiPlace">
+                    </div>
+                    <div id={props.gotiBaseId[2]} className="gotiPlace">
+                    </div>
+                    <div id={props.gotiBaseId[3]} className="gotiPlace">
+                    </div>
                 </div>
             </div>
         </>
