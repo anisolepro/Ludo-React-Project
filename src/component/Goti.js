@@ -38,7 +38,9 @@ export default function Goti(props) {
                 let temp = props.player[props.turn];
                 temp.piece += 1;
 
+                props.setDiceRole(true);
                 props.setPlayer([...props.player, temp])
+
 
 
             } else if (position.length < 4) {
@@ -86,7 +88,6 @@ export default function Goti(props) {
 
 
 
-                // console.log(extraMove);
                 // next turn
                 setTimeout(() => {
 
