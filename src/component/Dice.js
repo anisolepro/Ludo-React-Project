@@ -8,13 +8,13 @@ export default function Dice(props) {
     function randomNumb() {
         if (props.diceRole) {
 
-            let num = Math.floor(Math.random() * 6) + 1
+            let num = Math.floor(Math.random() * 6) + 1     // guess random number
             document.querySelector(".Dice").innerText = num;
 
 
             props.func(num);
 
-            [1, 2, 3, 4].forEach(e => {
+            [1, 2, 3, 4].forEach(e => { // remove active class 
                 [0, 1, 2, 3].forEach(f => {
                     document.getElementById(`${props.player[f].color}${e}`).classList.remove("active")
                 })
@@ -25,7 +25,7 @@ export default function Dice(props) {
             if (props.player[props.turn].piece == 0 && num != 6) {
                 // props.setDiceRole(true);
 
-                // next turn
+                // // next turn
                 if (props.turn + 1 < 4) {
 
                     props.setTurn(props.turn + 1)
@@ -37,7 +37,7 @@ export default function Dice(props) {
 
             else {
 
-                [1, 2, 3, 4].forEach(e => {
+                [1, 2, 3, 4].forEach(e => {     // add active class 
                     document.getElementById(`${props.player[props.turn].color}${e}`).classList.add("active")
                 })
 

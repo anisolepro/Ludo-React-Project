@@ -14,6 +14,7 @@ export default function Goti(props) {
 
     function gotiShift() {
 
+
         if (props.player[props.turn].color == props.color && props.diceRole == false) {
             if (props.diceValue == 6 && position == startId) {
                 if (props.color == "red") {
@@ -41,6 +42,10 @@ export default function Goti(props) {
 
 
             } else if (position.length < 4) {
+
+
+                let extraMove = false;
+
                 let boxPos = (props.diceValue + Number(position.split("b").join("")));
                 if (boxPos > 52) {
                     boxPos -= 52;
@@ -48,42 +53,56 @@ export default function Goti(props) {
                 setPosition(`b${boxPos}`)
                 shiftPosition(boxPos)
 
-                // if piece put on top of other
+                if (![9, 22, 35, 48, 4, 17, 30, 43].includes(boxPos)) {
+
+
+                    // if piece put on top of other
+                    setTimeout(() => {      // timeout to wait to get goti at place due to transition duration
+
+                        props.player.forEach(f => {
+                            [1, 2, 3, 4].forEach(e => {
+
+                                if (f.color !== props.color) {
+
+                                    let tempPiece = document.getElementById(`${f.color}${e}`)
+                                    let gotiID = document.getElementById(props.gotiID);
+
+                                    if (tempPiece.offsetTop === gotiID.offsetTop && tempPiece.offsetLeft === gotiID.offsetLeft) {
+
+                                        let boxId = document.getElementById(`gb${f.color}${e}`);
+
+                                        tempPiece.setAttribute('style', `top : ${boxId.offsetTop - 20}px ; left : ${boxId.offsetLeft + 10}px`);
+
+                                        // extra move for cutting goti
+
+                                        extraMove = true;
+                                    }
+                                }
+                            })
+                        })
+
+                    }, 500);
+                }
+
+
+
+                // console.log(extraMove);
+                // next turn
                 setTimeout(() => {
 
-                    props.player.forEach(f => {
-                        [1, 2, 3, 4].forEach(e => {
+                    props.setDiceRole(true);
 
-                            if (f.color !== props.color) {
+                    if (props.diceValue !== 6 && !extraMove) {
+                        if (props.turn + 1 < 4) {
 
-                                let tempPiece = document.getElementById(`${f.color}${e}`)
-                                let gotiID = document.getElementById(props.gotiID);
-
-                                if (tempPiece.offsetTop === gotiID.offsetTop && tempPiece.offsetLeft === gotiID.offsetLeft) {
-
-                                    let boxId = document.getElementById(`gb${f.color}${e}`);
-
-                                    tempPiece.setAttribute('style', `top : ${boxId.offsetTop - 20}px ; left : ${boxId.offsetLeft + 10}px`);
-                                }
-                            }
-                        })
-                    })
-
+                            props.setTurn(props.turn + 1)
+                        } else {
+                            props.setTurn(0)
+                        }
+                    }
                 }, 500);
 
 
-
-                props.setDiceRole(true);
-
-                // next turn
-                if (props.diceValue !== 6) {
-                    if (props.turn + 1 < 4) {
-
-                        props.setTurn(props.turn + 1)
-                    } else {
-                        props.setTurn(0)
-                    }
-                }
 
             }
 
@@ -102,7 +121,7 @@ export default function Goti(props) {
 
     return (
         <>
-            <a onClick={gotiShift} id={props.gotiID} className="Goti" style={{ 'top': props.top, 'left': props.left }}>
+            <a startposition={startId} onClick={gotiShift} id={props.gotiID} className="Goti" style={{ 'top': props.top, 'left': props.left }}>
                 <div className="gotiColor" style={{ 'backgroundColor': props.color }}>
                 </div>
             </a>

@@ -28,3 +28,10 @@
     width: 50px;
     z-index: 10;
 }
+
+#b4,
+#b17,
+#b30,
+#b43 {
+    background: #999;
+}
