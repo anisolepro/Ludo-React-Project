@@ -13,10 +13,10 @@ function App() {
   const [diceValue, setDiceValue] = useState(0);
   const [diceRole, setDiceRole] = useState(true);
   const [player, setPlayer] = useState([
-    { color: 'blue', piece: 0 },
-    { color: 'red', piece: 0 },
-    { color: 'green', piece: 0 },
-    { color: 'yellow', piece: 0 }]);
+    { color: 'blue', piece: 0, winning: 0 },
+    { color: 'red', piece: 0, winning: 0 },
+    { color: 'green', piece: 0, winning: 0 },
+    { color: 'yellow', piece: 0, winning: 0 }]);
 
   const [turn, setTurn] = useState(0);
   function setPosition(e) {

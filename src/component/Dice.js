@@ -8,6 +8,8 @@ export default function Dice(props) {
     function randomNumb() {
         if (props.diceRole) {
 
+            // console.log(`${props.player[props.turn].color} : ${props.player[props.turn].piece} : ${props.player[props.turn].winning}`)
+
 
             document.querySelector(".Dice").classList.toggle("rotate");
             let num = Math.floor(Math.random() * 6) + 1     // guess random number
